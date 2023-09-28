@@ -20,17 +20,14 @@ def get_json_data(url):
 
 
 def get_url_by_last_date_updated(execution_date):
-    # return f"https://data.cityofnewyork.us/resource/8wbx-tsch.json?last_date_updated={execution_date}"
-    return "https://data.cityofnewyork.us/resource/8wbx-tsch.json?active=YES"
+    return f"https://data.cityofnewyork.us/resource/8wbx-tsch.json?last_date_updated={execution_date}"
+    # return "https://data.cityofnewyork.us/resource/8wbx-tsch.json?active=YES"
 
 
 def fetch_data_to_storage(**kwargs):
     execution_date = kwargs["execution_date"]
-    # json_data = get_json_data(get_url_by_last_date_updated(str(execution_date)[:10]))
     json_dict = get_json_data(get_url_by_last_date_updated(str(execution_date)[:10]))
     
-    # json_dict = json.loads(json_data)
-    # json_text = json.dumps(json_dict)
     json_string = ""
     for e in json_dict:
         json_string += "\n" + json.dumps(e)
